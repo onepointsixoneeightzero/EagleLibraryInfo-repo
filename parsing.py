@@ -83,4 +83,36 @@ for names in patt_name:
     FpDict_pad[names]=Fp_pad
     Fp_pad=[]
 
-print(FpDict_pad)
+###################################################################
+    #FOR DEVICES INFO
+#Gather all Devices Names
+for item in root.findall('./drawing/library/devicesets/'):
+    device_name.append(item.attrib.get('name'))
+    
+## getting pad/smd names with respective Symbols
+dev_start_string="./drawing/library/devicesets/deviceset[@name='"
+dev_sym_path="']/gates/"
+end_str="']/"
+dev_fp_path="']/devices/"
+
+#Devices with Respective symbols and Footprints (Seperate dictionaries)
+for names in device_name:
+    string=dev_start_string+names+dev_sym_path
+    for item in root.findall(string):
+        if(item.tag=='gate'):
+            Dev_SymList.append(item.attrib.get('symbol'))
+    Dev_SymDict[names]=Dev_SymList
+    Dev_SymList=[]
+    ## gathers Device ,[Symbols]
+
+    string=dev_start_string+names+dev_fp_path
+    for item in root.findall(string):
+        if(item.tag=='device'):
+            Dev_FpList.append(item.attrib.get('package'))
+    Dev_FpDict[names]=Dev_FpList
+    Dev_FpList=[]
+    ## gathers Device ,[Footprints]
+
+print(Dev_SymDict)
+print(Dev_FpDict)
+
