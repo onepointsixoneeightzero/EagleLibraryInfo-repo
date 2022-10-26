@@ -113,6 +113,14 @@ for names in device_name:
     Dev_FpList=[]
     ## gathers Device ,[Footprints]
 
-print(Dev_SymDict)
-print(Dev_FpDict)
+#shove them in Dictionary.. One Dictionary for all Names
+libDict["Symbol"]=sym_name
+libDict["LandPattern"]=patt_name
+libDict["Device"]=device_name
+#Number of total items in the Library
+for key in libDict:
+    libItems_countDict[key]=len(libDict[key])
+    # getting total number of Syms, Fps, and Devs in a lbr file.
+print("This Library ",library_name," Contains : ")
+print("".join("| {0:<13s}->{1:>8d} |\n".format(k, v) for k, v in libItems_countDict.items()))
 
