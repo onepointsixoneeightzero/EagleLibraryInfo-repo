@@ -7,7 +7,7 @@ import json
 
 parent = tkinter.Tk() # Create the object
 parent.overrideredirect(1) # Avoid it appearing and then disappearing quickly
-parent.iconbitmap("abc.ico") # Set an icon (this is optional - must be in a .ico format)
+parent.iconbitmap("./icon/mamoth.ico") # Set an icon (this is optional - must be in a .ico format)
 parent.withdraw() # Hide the window as we do not want to see this one
 
 # Ask the user to select a single file name.
@@ -15,7 +15,7 @@ file_types = [('Eagle Library or XML', '*.lbr;*.xml'), ('All files', '*')]
 #library_name = filedialog.askopenfilename(title='Select a file', filetypes=file_types, parent=parent)
 
 # Ask the user to select a one or more file names.
-library_names = filedialog.askopenfilenames(title='Select one or more files', filetypes=file_types, parent=parent)
+library_names = filedialog.askopenfilenames(title='Select one or more Eagle Library', filetypes=file_types, parent=parent)
 
 # ask the user for excel file result output
 outputExcelprompt = messagebox.askyesno('Output Excel File ?', 'Do You Want To Create an Excel File with Results?', parent=parent) # Yes / No / Cancel
@@ -123,6 +123,9 @@ for library_name in library_names:
         Dev_FpDict[names]=Dev_FpList
         Dev_FpList=[]
         ## gathers Device ,[Footprints]
+        
+    ###################################################################
+        #Gathering all Data
 
     #shove them in Dictionary.. One Dictionary for all Names
     libDict["Symbol"]=sym_name
