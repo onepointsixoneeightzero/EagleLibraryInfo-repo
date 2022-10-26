@@ -2,6 +2,8 @@ import tkinter
 from tkinter import messagebox
 from tkinter import simpledialog
 from tkinter import filedialog
+import xml.etree.ElementTree as ET
+import json
 
 parent = tkinter.Tk() # Create the object
 parent.overrideredirect(1) # Avoid it appearing and then disappearing quickly
@@ -9,7 +11,44 @@ parent.iconbitmap("abc.ico") # Set an icon (this is optional - must be in a .ico
 parent.withdraw() # Hide the window as we do not want to see this one
 
 # Ask the user to select a single file name.
-file_name = filedialog.askopenfilename(title='Select a file', parent=parent)
+library_name = filedialog.askopenfilename(title='Select a file', parent=parent)
 
 # Ask the user to select a one or more file names.
-#file_names = filedialog.askopenfilenames(title='Select one or more files', parent=parent)
+#library_names = filedialog.askopenfilenames(title='Select one or more files', parent=parent)
+
+
+###########################################
+
+
+
+tree= ET.parse(library_name)
+#tree= ET.parse('passive.lbr')
+root=tree.getroot()
+
+libDict={key: [] for key in ['Symbol', 'LandPattern', 'Device']}
+#Create a dictionary with SYMBOL LANDPATTER AND DEVICES as keys
+libItems_countDict={}
+sym_name=[]
+patt_name=[]
+device_name=[]
+
+SymDict_pin={}# Key = Symbol_Name; Value = Symbol_Pins
+Sym_pins=[]# for Name of pins
+FpDict_pad={}# Key = Fp_Name; Value = Fp_Pads+SMDs
+Fp_pad=[]# for Name of pads
+Dev_FpDict={}# Key = Dev_Name; Value = Fp_Name
+Dev_FpList=[] # for names of FP/s in a device
+Dev_SymDict={}# Key = Dev_Name; Value = Sym_Name
+Dev_SymList=[]# for names of Sym/s in a device
+
+## ^^ JUST A LOT OF VARIABLEs
+
+
+#Gather all Symbols Names
+for item in root.findall('./drawing/library/symbols/'):
+    sym_name.append(item.attrib.get('name'))
+    # Get all symbol names and store in sym_name list
+
+print(sym_name)
+
+
