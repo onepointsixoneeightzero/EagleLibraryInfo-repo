@@ -11,11 +11,22 @@ parent.iconbitmap("abc.ico") # Set an icon (this is optional - must be in a .ico
 parent.withdraw() # Hide the window as we do not want to see this one
 
 # Ask the user to select a single file name.
-library_name = filedialog.askopenfilename(title='Select a file', parent=parent)
+file_types = [('Eagle Library or XML', '*.lbr;*.xml'), ('All files', '*')]
+library_name = filedialog.askopenfilename(title='Select a file', filetypes=file_types, parent=parent)
 
 # Ask the user to select a one or more file names.
 #library_names = filedialog.askopenfilenames(title='Select one or more files', parent=parent)
 
+# ask the user for excel file result output
+outputExcelprompt = messagebox.askyesno('Output Excel File ?', 'Do You Want To Create an Excel File with Results?', parent=parent) # Yes / No / Cancel
+
+if outputExcelprompt == True:
+    print("selected yes")
+    save_as = filedialog.asksaveasfilename(title='Save as',defaultextension='.',filetypes=(("Excel", "*.xls"),("TXT", "*.txt")),parent=parent)
+    print(save_as)
+    #path = filedialog.asksaveasfilename(title='Select file',defaultextension='.',filetypes=(png, eps, txt, xml))
+else:
+    print("selected no")
 
 ###########################################
 
@@ -123,4 +134,3 @@ for key in libDict:
     # getting total number of Syms, Fps, and Devs in a lbr file.
 print("This Library ",library_name," Contains : ")
 print("".join("| {0:<13s}->{1:>8d} |\n".format(k, v) for k, v in libItems_countDict.items()))
-
