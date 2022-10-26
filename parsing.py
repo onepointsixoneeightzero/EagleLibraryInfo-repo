@@ -44,6 +44,8 @@ Dev_SymList=[]# for names of Sym/s in a device
 ## ^^ JUST A LOT OF VARIABLEs
 
 
+###################################################################
+    #FOR SYMBOLS INFO
 #Gather all Symbols Names
 for item in root.findall('./drawing/library/symbols/'):
     sym_name.append(item.attrib.get('name'))
@@ -60,7 +62,25 @@ for names in sym_name:
             Sym_pins.append(item.attrib.get('name'))
     SymDict_pin[names]=Sym_pins
     Sym_pins=[]
-    # Get pin names with respective Symbols
-print(SymDict_pin)
 
-    
+###################################################################
+    #FOR FOOTPRINTS INFO
+#Gather all Footprints Names
+for item in root.findall('./drawing/library/packages/'):
+    patt_name.append(item.attrib.get('name'))
+
+## getting pad/smd names with respective Symbols
+fp_start_string="./drawing/library/packages/package[@name='"
+fp_end_path="']/"
+
+for names in patt_name:        
+    string=fp_start_string+names+fp_end_path
+    for item in root.findall(string):
+        if(item.tag=='pad'):
+            Fp_pad.append(item.attrib.get('name'))
+        elif(item.tag=='smd'):
+            Fp_pad.append(item.attrib.get('name'))
+    FpDict_pad[names]=Fp_pad
+    Fp_pad=[]
+
+print(FpDict_pad)
