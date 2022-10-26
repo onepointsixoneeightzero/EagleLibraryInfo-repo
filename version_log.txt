@@ -1,1 +1,2 @@
 - 26 october 2022 - Added 7 steps. Save as pending and Structured data pending.
+-for day 2.  Ammend it after finishing day to to keep track.
