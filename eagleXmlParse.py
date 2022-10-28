@@ -66,7 +66,6 @@ for names in SymNames:
             Sym_Text_layer.append(item.attrib.get('layer'))
             Sym_Text_actualText.append(item.text)
 
-
     Symbol_pin_Detail['PinName'] = Sym_Pin_Name
     Symbol_pin_Detail['xLoc'] = Sym_Pin_X
     Symbol_pin_Detail['yLoc'] = Sym_Pin_Y
@@ -75,19 +74,18 @@ for names in SymNames:
     Symbol_pin_Detail['PinDir'] = Sym_Pin_Dir
     Symbol_pin_Detail['PinFunc'] = Sym_Pin_Funct
 
-    Symbol_shape_Details['x1']=Sym_Shape_x1
-    Symbol_shape_Details['y1']=Sym_Shape_y1
-    Symbol_shape_Details['x2']=Sym_Shape_x2
-    Symbol_shape_Details['y2']=Sym_Shape_y2
-    Symbol_shape_Details['width']=Sym_Shape_width
-    Symbol_shape_Details['layer']=Sym_Shape_layer
+    Symbol_shape_Details['x1'] = Sym_Shape_x1
+    Symbol_shape_Details['y1'] = Sym_Shape_y1
+    Symbol_shape_Details['x2'] = Sym_Shape_x2
+    Symbol_shape_Details['y2'] = Sym_Shape_y2
+    Symbol_shape_Details['width'] = Sym_Shape_width
+    Symbol_shape_Details['layer'] = Sym_Shape_layer
 
     Symbol_Attributes_Detail['x'] = Sym_Text_x
     Symbol_Attributes_Detail['y'] = Sym_Text_y
     Symbol_Attributes_Detail['size'] = Sym_Text_size
     Symbol_Attributes_Detail['layer'] = Sym_Text_layer
     Symbol_Attributes_Detail['Contains'] = Sym_Text_actualText
-
 
     Sym_Pin_Name = []
     Sym_Pin_X = []
@@ -109,7 +107,6 @@ for names in SymNames:
     Sym_Text_size = []
     Sym_Text_layer = []
     Sym_Text_actualText = []
-
 
     symPindata = pd.DataFrame(data=Symbol_pin_Detail)
     symShapedata = pd.DataFrame(data=Symbol_shape_Details)
