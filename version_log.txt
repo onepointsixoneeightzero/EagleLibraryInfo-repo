@@ -1,2 +1,6 @@
 - 26 october 2022 - Added 7 steps. Save as pending and Structured data pending.
--for day 2.  Ammend it after finishing day to to keep track.
+- 28 october 2022 - Added and renamed some file. Made almost full symbol parse
+values embedded in pandas table.
+table for pins
+table for attributes
+table for pin outline.
