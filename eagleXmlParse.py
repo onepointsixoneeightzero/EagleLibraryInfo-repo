@@ -64,6 +64,7 @@ for names in SymName:
     Sym_Pin_Dir = []
     Sym_Pin_Funct = []
 
-    print(Symbol_Detail)
+
+    print(names)
     df=pd.DataFrame(data=Symbol_Detail)
     print(df)
