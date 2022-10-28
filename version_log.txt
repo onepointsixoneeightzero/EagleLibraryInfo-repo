@@ -4,3 +4,5 @@ values embedded in pandas table.
 table for pins
 table for attributes
 table for pin outline.
+
+Reset to day 2 here.
