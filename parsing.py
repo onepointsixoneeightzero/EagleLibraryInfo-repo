@@ -1,6 +1,5 @@
 import win_tkinters as dg
 import xml.etree.ElementTree as ET
-import json
 import pandas as pd
 
 library_names = dg.get_multiple_file('Please Select one or more Eagle Libraries')
@@ -23,7 +22,7 @@ for library_name in library_names:
     root = tree.getroot()
 
     libDict = {key: [] for key in ['Symbol', 'LandPattern', 'Device']}
-    # Create a dictionary with SYMBOL LANDPATTER AND DEVICES as keys
+    # Create a dictionary with SYMBOL LANDPATTERN AND DEVICES as keys
     libItems_countDict = {}
     sym_name = []
     patt_name = []
