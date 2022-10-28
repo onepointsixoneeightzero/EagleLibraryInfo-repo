@@ -64,7 +64,7 @@ for names in SymNames:
             Sym_Text_y.append(item.attrib.get('y'))
             Sym_Text_size.append(item.attrib.get('size'))
             Sym_Text_layer.append(item.attrib.get('layer'))
-           # Sym_Text_actualText.append(item.text.get())
+            Sym_Text_actualText.append(item.text)
 
 
     Symbol_pin_Detail['PinName'] = Sym_Pin_Name
@@ -86,7 +86,7 @@ for names in SymNames:
     Symbol_Attributes_Detail['y'] = Sym_Text_y
     Symbol_Attributes_Detail['size'] = Sym_Text_size
     Symbol_Attributes_Detail['layer'] = Sym_Text_layer
-    #Symbol_Attributes_Detail['Contains'] = Sym_Text_actualText
+    Symbol_Attributes_Detail['Contains'] = Sym_Text_actualText
 
 
     Sym_Pin_Name = []
