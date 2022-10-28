@@ -4,6 +4,7 @@ from tkinter import simpledialog
 from tkinter import filedialog
 import xml.etree.ElementTree as ET
 import json
+import pandas as pd
 
 parent = tkinter.Tk() # Create the object
 parent.overrideredirect(1) # Avoid it appearing and then disappearing quickly
