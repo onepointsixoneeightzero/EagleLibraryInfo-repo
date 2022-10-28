@@ -18,7 +18,6 @@ else:
 for library_name in library_names:
 
     tree = ET.parse(library_name)
-    # tree= ET.parse('passive.lbr')
     root = tree.getroot()
 
     libDict = {key: [] for key in ['Symbol', 'LandPattern', 'Device']}
