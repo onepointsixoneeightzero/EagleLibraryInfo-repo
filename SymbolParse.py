@@ -1,15 +1,36 @@
 import xml.etree.ElementTree as ET
 import pandas as pd
 
+symbols_path = "./drawing/library/symbols/"
+sym_start_string = symbols_path + "symbol[@name='"
+sym_end_path = "']/"
+
 def Library_root(path_and_file):
 
     tree = ET.parse(path_and_file)
     root = tree.getroot()
     return root
 
-def symParse(root_):
+def Symbol_and_path (root_):
 
+    i=0
     SymNames = []
+    SymAndPathDict = {}
+
+    for item in root_.findall(symbols_path):
+        SymNames.append(item.attrib.get('name'))
+        string = sym_start_string + SymNames[i] + sym_end_path
+        SymAndPathDict[SymNames[i]]=string
+        i += 1
+    return SymAndPathDict
+
+def symParse_pin(root_):
+    i=0
+
+    SymAndPathDict = {}
+    SymNames = []
+    SymPath = []
+
 
     simpleSYMdetail = {}
 
@@ -37,18 +58,12 @@ def symParse(root_):
     Sym_Shape_width = []
     Sym_Shape_layer = []
 
-    ###################################################################
-    # FOR SYMBOLS INFO
-    sym_start_string = "./drawing/library/symbols/symbol[@name='"
-    sym_end_path = "']/"
-    i=0
-    for item in root_.findall('./drawing/library/symbols/'):
-
+    for item in root_.findall(symbols_path):
         SymNames.append(item.attrib.get('name'))
-        # print(item.attrib.values())
         string = sym_start_string + SymNames[i] + sym_end_path
-        # Get all symbol names and store in sym_name list
+        SymAndPathDict[SymNames[i]]=string
 
+        # Get all symbol names and store in sym_name list
         for item_ in root_.findall(string):
             if item_.tag == 'pin':
                 Sym_Pin_Name.append(item_.attrib.get('name'))
@@ -118,8 +133,9 @@ def symParse(root_):
         symShapedata = pd.DataFrame(data=Symbol_shape_Details)
         symTextdata = pd.DataFrame(data=Symbol_Attributes_Detail)
 
-        print(SymNames[i])
-        print(symPindata)
-        print(symShapedata)
-        print(symTextdata)
+        # print(SymNames[i])
+        # print(symPindata)
+        # print(symShapedata)
+        # print(symTextdata)
         i += 1
+    #print(SymAndPathDict)

@@ -13,5 +13,7 @@ else:
     print("selected no")
 
 for library_name in library_names:
-    symPrsr.symParse(symPrsr.Library_root(library_name))
+    xmlroot=symPrsr.Library_root(library_name)
+    symPrsr.symParse_pin(xmlroot)
+    print(symPrsr.Symbol_and_path(xmlroot))
 
