@@ -1,13 +1,4 @@
-import xml.etree.ElementTree as ET
 import pandas as pd
-
-
-
-def Library_root(path_and_file):
-
-    tree = ET.parse(path_and_file)
-    root = tree.getroot()
-    return root
 
 def Symbol_and_path (root_):
     symbols_path = "./drawing/library/symbols/"

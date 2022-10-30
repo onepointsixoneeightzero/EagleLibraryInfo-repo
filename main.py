@@ -1,4 +1,5 @@
 import win_tkinters as dg
+import xml_root as xr
 import SymbolParse as symPrsr
 
 library_names = dg.get_multiple_file('Please Select one or more Eagle Libraries')
@@ -15,7 +16,7 @@ else:
     print("selected no")
 
 for library_name in library_names:
-    xmlroot=symPrsr.Library_root(library_name)
+    xmlroot=xr.Library_root(library_name)
 #    symPrsr.symParse_pin(xmlroot)
     symAndpath = symPrsr.Symbol_and_path(xmlroot)
     for keys, values in symAndpath.items():
