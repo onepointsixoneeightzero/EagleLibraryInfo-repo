@@ -23,7 +23,7 @@ layer_fill = []
 layer_visible = []
 layer_active = []
 
-print(len(LayersDict))
+#print(len(LayersDict))
 
 def getNamefromNumLayers(num):
     return str(LayersDict[str(num)])

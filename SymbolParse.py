@@ -1,4 +1,5 @@
 import pandas as pd
+import layersEagle as LE
 
 def Symbol_and_path (root_):
     symbols_path = "./drawing/library/symbols/"
@@ -61,7 +62,7 @@ def symParse_text (root_,libPath):
             Sym_Text_x.append(item_.attrib.get('x'))
             Sym_Text_y.append(item_.attrib.get('y'))
             Sym_Text_size.append(item_.attrib.get('size'))
-            Sym_Text_layer.append(item_.attrib.get('layer'))
+            Sym_Text_layer.append(LE.getNamefromNumLayers(item_.attrib.get('layer')))
             Sym_Text_actualText.append(item_.text)
     Symbol_Attributes_Detail['x'] = Sym_Text_x
     Symbol_Attributes_Detail['y'] = Sym_Text_y
@@ -89,7 +90,7 @@ def symParse_shape (root_,libPath):
             Sym_Shape_x2.append(item_.attrib.get('x2'))
             Sym_Shape_y2.append(item_.attrib.get('y2'))
             Sym_Shape_width.append(item_.attrib.get('width'))
-            Sym_Shape_layer.append(item_.attrib.get('layer'))
+            Sym_Shape_layer.append(LE.getNamefromNumLayers(item_.attrib.get('layer')))
         Symbol_shape_Details['x1'] = Sym_Shape_x1
         Symbol_shape_Details['y1'] = Sym_Shape_y1
         Symbol_shape_Details['x2'] = Sym_Shape_x2

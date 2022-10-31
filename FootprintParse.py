@@ -43,7 +43,7 @@ def fpParse_pin (root_,libPath):
             Fp_pad_shape.append(item_.attrib.get('shape'))
             Fp_smd_dx.append(item_.attrib.get('dx'))
             Fp_smd_dy.append(item_.attrib.get('dy'))
-            Fp_smd_layer.append(item_.attrib.get('layer'))
+            Fp_smd_layer.append(LE.getNamefromNumLayers(item_.attrib.get('layer')))
 
     Fp_pin_Detail['Pad_Type'] = Fp_padSmd_type
     Fp_pin_Detail['Pad_Name'] = Fp_pad_Name
@@ -78,7 +78,7 @@ def fpParse_onlySmd (root_,libPath):
             Fp_pad_Y.append(item_.attrib.get('y'))
             Fp_smd_dx.append(item_.attrib.get('dx'))
             Fp_smd_dy.append(item_.attrib.get('dy'))
-            Fp_smd_layer.append(item_.attrib.get('layer'))
+            Fp_smd_layer.append(LE.getNamefromNumLayers(item_.attrib.get('layer')))
 
         elif item_.tag == 'pad':
             SMD_PAD_FLAG=1
@@ -150,7 +150,7 @@ def fpParse_text (root_,libPath):
             Fp_Text_y.append(item_.attrib.get('y'))
             Fp_Text_size.append(item_.attrib.get('size'))
             Fp_Text_ratio.append(item_.attrib.get('ratio'))
-            Fp_Text_layer.append(item_.attrib.get('layer'))
+            Fp_Text_layer.append(LE.getNamefromNumLayers(item_.attrib.get('layer')))
             Fp_Text_actualText.append(item_.text)
     Fp_Attributes_Detail['x'] = Fp_Text_x
     Fp_Attributes_Detail['y'] = Fp_Text_y
