@@ -43,7 +43,10 @@ def fpParse_pin (root_,libPath):
             Fp_pad_shape.append(item_.attrib.get('shape'))
             Fp_smd_dx.append(item_.attrib.get('dx'))
             Fp_smd_dy.append(item_.attrib.get('dy'))
-            Fp_smd_layer.append(LE.getNamefromNumLayers(item_.attrib.get('layer')))
+            if item_.tag == 'smd':
+                Fp_smd_layer.append(LE.getNamefromNumLayers(item_.attrib.get('layer')))
+            elif item_.tag == 'pad':
+                Fp_smd_layer.append('None')
 
     Fp_pin_Detail['Pad_Type'] = Fp_padSmd_type
     Fp_pin_Detail['Pad_Name'] = Fp_pad_Name

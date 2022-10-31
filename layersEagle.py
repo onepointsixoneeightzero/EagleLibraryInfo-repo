@@ -26,7 +26,10 @@ layer_active = []
 #print(len(LayersDict))
 
 def getNamefromNumLayers(num):
-    return str(LayersDict[str(num)])
+    if num == 'None':
+        return 0
+    else:
+        return str(LayersDict[str(num)])
 
 
 def Read_layers_from_lib(root):
