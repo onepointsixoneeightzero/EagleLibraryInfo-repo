@@ -1,5 +1,5 @@
 import pandas as pd
-
+import layersEagle as LE
 def Footprint_and_path (root_):
     fp_path = "./drawing/library/packages/"
     fp_start_string = fp_path + "package[@name='"
@@ -135,3 +135,29 @@ def fpParse_onlyPAD (root_,libPath):
         return FpPadData
     elif SMD_PAD_FLAG ==1:
         return "NO ThruHole PRESENT"
+
+def fpParse_text (root_,libPath):
+    Fp_Attributes_Detail = {}
+    Fp_Text_x = []
+    Fp_Text_y = []
+    Fp_Text_size = []
+    Fp_Text_ratio = []
+    Fp_Text_layer = []
+    Fp_Text_actualText = []
+    for item_ in root_.findall(libPath):
+        if item_.tag == 'text':
+            Fp_Text_x.append(item_.attrib.get('x'))
+            Fp_Text_y.append(item_.attrib.get('y'))
+            Fp_Text_size.append(item_.attrib.get('size'))
+            Fp_Text_ratio.append(item_.attrib.get('ratio'))
+            Fp_Text_layer.append(item_.attrib.get('layer'))
+            Fp_Text_actualText.append(item_.text)
+    Fp_Attributes_Detail['x'] = Fp_Text_x
+    Fp_Attributes_Detail['y'] = Fp_Text_y
+    Fp_Attributes_Detail['size'] = Fp_Text_size
+    Fp_Attributes_Detail['ratio'] = Fp_Text_ratio
+    Fp_Attributes_Detail['layer'] = Fp_Text_layer
+    Fp_Attributes_Detail['Contains'] = Fp_Text_actualText
+
+    FpTextdata = pd.DataFrame(data=Fp_Attributes_Detail)
+    return FpTextdata

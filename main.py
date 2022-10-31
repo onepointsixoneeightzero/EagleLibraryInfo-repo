@@ -32,7 +32,7 @@ for library_name in library_names:
         print("********************************************************")
         #print(keys)
         print(values)
-        print(fpPrsr.fpParse_onlyPAD(xmlroot,values))
+        print(fpPrsr.fpParse_text(xmlroot,values))
         print("########################################################")
 
     print("111111111111111111111111111111111111111111111111111111111")
