@@ -20,18 +20,19 @@ for library_name in library_names:
 #    symPrsr.symParse_pin(xmlroot)
     symAndpath = symPrsr.Symbol_and_path(xmlroot)
     fpAndpath = fpPrsr.Footprint_and_path(xmlroot)
-    for keys, values in symAndpath.items():
-        print("********************************************************")
-        print(keys)
-        print(values)
-        # print(symPrsr.symParse_shape(xmlroot,values))
-        print("########################################################")
+    # for keys, values in symAndpath.items():
+    #     print("********************************************************")
+    #     print(keys)
+    #     print(values)
+    #     # print(symPrsr.symParse_shape(xmlroot,values))
+    #     print("########################################################")
 
     print("00000000000000000000000000000000000000000000000000000000")
     for keys, values in fpAndpath.items():
         print("********************************************************")
-        print(keys)
+        #print(keys)
         print(values)
+        print(fpPrsr.fpParse_onlyPAD(xmlroot,values))
         print("########################################################")
 
     print("111111111111111111111111111111111111111111111111111111111")
